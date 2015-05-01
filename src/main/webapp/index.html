@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    
+    <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <script src="bower_components/angular/angular.min.js"></script>
+    
+    <script src="js/app.js"></script>
+</head>
+<body ng-app="starter">
+    <!--<div id="message">-->
+
+    <!--</div>-->
+    <div class="container">
+        <h1 class="page-header text-center">Hello SSE world</h1>
+
+        <div class="row" ng-controller="MainCtrl">
+            <div class="col-md-10">
+
+                <form class="form-inline" ng-submit="connect()" ng-show="notConnected">
+                    <input class="form-control" placeholder="Your id" ng-model="id" required>
+                    <button class="btn btn-danger" type="submit">Connect</button>
+                </form>
+
+                <form class="form-inline" ng-submit="send()" ng-hide="notConnected">
+                    <input class="form-control" placeholder="Comma separated ids" ng-model="subs" required>
+                    <input class="form-control" placeholder="Text" ng-model="text" required>
+                    <button class="btn btn-primary" type="submit">Send</button>
+                </form>
+                <br>
+                <button class="btn btn-success" ng-show="newMessages.length" ng-click="flush()">{{newMessages.length}} new messages</button>
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="message in messages | orderBy: '-date'">
+                        <p><em>Who:</em>&nbsp;{{message.who}}</p>
+                        <p><em>Text:</em>&nbsp;{{message.text}}</p>
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script>
+//        var source = new EventSource("/api/ws/sub/2");
+//        console.log("connected");
+//        var message = document.getElementById("message");
+//        source.onopen = function(event){
+//            console.log("opened");
+//        };
+//        source.onmessage = function(event) {
+//            console.log(event.data);
+//            message.innerHTML = event.data;
+//        };
+//        source.onerror = function(event){
+//            console.log("error");
+//        };
+//        source.onclose = function(event){
+//            console.log("closed");
+//        };
+    </script>
+</body>
+</html>

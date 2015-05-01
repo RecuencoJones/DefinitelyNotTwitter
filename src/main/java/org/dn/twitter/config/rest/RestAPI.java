@@ -33,6 +33,7 @@ public class RestAPI {
         for(String s : message.getTo().split(",")){
             wsd.dispatch(nm,s);
         }
+        System.out.println("======================");
         return new Gson().toJson(nm);
     }
 }
